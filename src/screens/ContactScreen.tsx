@@ -26,7 +26,9 @@ export function ContactScreen({ onGoBack }: ContactScreenProps) {
   };
 
   const handleInstagram = () => {
-    Alert.alert('Coming Soon', 'Our Instagram page is launching soon! Stay tuned.');
+    Linking.openURL('https://www.instagram.com/recessappig/').catch(() => {
+      Alert.alert('Instagram', 'Follow us @recessappig');
+    });
   };
 
   return (
@@ -75,7 +77,7 @@ export function ContactScreen({ onGoBack }: ContactScreenProps) {
             </View>
             <View style={styles.contactInfo}>
               <Text style={styles.contactLabel}>Instagram</Text>
-              <Text style={styles.contactValue}>Coming soon</Text>
+              <Text style={styles.contactValue}>@recessappig</Text>
             </View>
             <Ionicons name="chevron-forward" size={20} color={colors.textSecondary} />
           </TouchableOpacity>
