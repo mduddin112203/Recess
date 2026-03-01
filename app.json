@@ -1,1 +1,59 @@
-{"expo":{"name":"Recess","slug":"recess","scheme":"recess","version":"1.0.0","orientation":"portrait","icon":"./assets/Mainlogoblue.png","userInterfaceStyle":"automatic","splash":{"image":"./assets/Mainlogoblue.png","resizeMode":"contain","backgroundColor":"#F8FAFC"},"ios":{"supportsTablet":true,"bundleIdentifier":"com.recess.app","config":{"usesNonExemptEncryption":false},"infoPlist":{"NSLocationWhenInUseUsageDescription":"Recess uses your location to suggest nearby zones for taking breaks.","NSPhotoLibraryUsageDescription":"Recess needs access to your photo library to set a profile picture or add activity photos.","NSCameraUsageDescription":"Recess needs camera access to take profile pictures or activity photos.","NSAppTransportSecurity":{"NSAllowsArbitraryLoads":true}}},"android":{"adaptiveIcon":{"foregroundImage":"./assets/Mainlogoblue.png","backgroundColor":"#F8FAFC"},"package":"com.recess.app"},"web":{"favicon":"./assets/Mainlogoblue.png"},"plugins":[["expo-image-picker",{"photosPermission":"Recess needs access to your photo library to set profile pictures or add activity photos."}],["expo-notifications",{"icon":"./assets/Mainlogoblue.png","color":"#4F46E5"}]],"updates":{"enabled":false}}}
+{
+  "expo": {
+    "name": "Recess",
+    "slug": "recess",
+    "scheme": "recess",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/Mainlogoblue.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/Mainlogoblue.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#F8FAFC"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.recess.app",
+      "config": {
+        "usesNonExemptEncryption": false
+      },
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Recess uses your location to suggest nearby zones for taking breaks.",
+        "NSPhotoLibraryUsageDescription": "Recess needs access to your photo library to set a profile picture or add activity photos.",
+        "NSCameraUsageDescription": "Recess needs camera access to take profile pictures or activity photos.",
+        "NSAppTransportSecurity": {
+          "NSAllowsArbitraryLoads": true
+        }
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/Mainlogoblue.png",
+        "backgroundColor": "#F8FAFC"
+      },
+      "package": "com.recess.app"
+    },
+    "web": {
+      "favicon": "./assets/Mainlogoblue.png"
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Recess needs access to your photo library to set profile pictures or add activity photos."
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/Mainlogoblue.png",
+          "color": "#4F46E5"
+        }
+      ]
+    ],
+    "updates": {
+      "enabled": false
+    }
+  }
+}

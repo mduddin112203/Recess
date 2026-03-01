@@ -62,13 +62,13 @@ export function ScheduleDetailModal({ visible, onClose, item }: ScheduleDetailMo
   if (!item) return null;
 
   const renderBlock = (block: ScheduleBlock) => {
-    const typeInfo = BLOCK_TYPES.find(bt => bt.id === block.type);
+    const typeInfo = BLOCK_TYPES.find(bt => bt.value === block.type);
     const isRecurring = block.day_of_week != null;
 
     return (
       <>
         <View style={styles.headerRow}>
-          <View style={[styles.iconCircle, { backgroundColor: typeInfo?.color || colors.primary }]}>
+          <View style={[styles.iconCircle, { backgroundColor: typeInfo?.color || colors.primary }]}>  
             <Ionicons name={(typeInfo?.icon as any) || 'time-outline'} size={22} color="#fff" />
           </View>
           <View style={{ flex: 1, marginLeft: 12 }}>
@@ -106,6 +106,7 @@ export function ScheduleDetailModal({ visible, onClose, item }: ScheduleDetailMo
           </View>
         ) : null}
 
+        {/* Duration */}
         {(() => {
           const sp = block.start_time.split(':').map(Number);
           const ep = block.end_time.split(':').map(Number);
@@ -181,6 +182,7 @@ export function ScheduleDetailModal({ visible, onClose, item }: ScheduleDetailMo
           <Ionicons name="trophy-outline" size={18} color={colors.warning} />
           <Text style={styles.detailText}>{entry.points_awarded} points earned</Text>
         </View>
+
       </>
     );
   };

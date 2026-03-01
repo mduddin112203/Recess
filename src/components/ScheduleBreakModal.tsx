@@ -368,6 +368,7 @@ export function ScheduleBreakModal({ visible, onClose, onCreated }: ScheduleBrea
                   )}
                 </TouchableOpacity>
               ))}
+              {/* Pending custom location chip */}
               {pendingCustomLocation && (
                 <TouchableOpacity
                   style={[styles.optionChip, selectedZone === PENDING_CUSTOM_ID && styles.optionChipActive, { maxWidth: '100%' }]}

@@ -71,7 +71,7 @@ export function AddBlockModal({ visible, onClose }: AddBlockModalProps) {
 
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
-
+  
   const [isRecurring, setIsRecurring] = useState(false);
   const [selectedDays, setSelectedDays] = useState<number[]>([]);
   const [recurringEndDate, setRecurringEndDate] = useState<Date | null>(null);
@@ -87,6 +87,8 @@ export function AddBlockModal({ visible, onClose }: AddBlockModalProps) {
     return d;
   };
 
+
+
   const formatDate = (date: Date) => {
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -94,13 +96,13 @@ export function AddBlockModal({ visible, onClose }: AddBlockModalProps) {
   };
 
   const toggleDay = (day: number) => {
-    setSelectedDays(prev =>
+    setSelectedDays(prev => 
       prev.includes(day) ? prev.filter(d => d !== day) : [...prev, day]
     );
   };
 
   const selectWeekdays = () => {
-    setSelectedDays([1, 2, 3, 4, 5]);
+    setSelectedDays([1, 2, 3, 4, 5]); // Mon-Fri
   };
 
   const handleAdd = async () => {
@@ -228,6 +230,7 @@ export function AddBlockModal({ visible, onClose }: AddBlockModalProps) {
       onRequestClose={onClose}
     >
       <View style={styles.container}>
+        {/* Header */}
         <View style={styles.header}>
           <Text style={styles.title}>Add Schedule Block</Text>
           <TouchableOpacity onPress={onClose}>
@@ -235,12 +238,14 @@ export function AddBlockModal({ visible, onClose }: AddBlockModalProps) {
           </TouchableOpacity>
         </View>
 
-        <ScrollView
+        <ScrollView 
           style={styles.scrollView}
           contentContainerStyle={styles.content}
           keyboardShouldPersistTaps="handled"
           showsVerticalScrollIndicator={false}
+
         >
+          {/* Title */}
           <View style={styles.inputGroup}>
             <Text style={styles.label}>Title</Text>
             <TextInput
@@ -253,6 +258,7 @@ export function AddBlockModal({ visible, onClose }: AddBlockModalProps) {
             />
           </View>
 
+          {/* Block Type */}
           <View style={styles.inputGroup}>
             <Text style={styles.label}>Type</Text>
             <View style={styles.typeGrid}>
@@ -271,6 +277,7 @@ export function AddBlockModal({ visible, onClose }: AddBlockModalProps) {
             </View>
           </View>
 
+          {/* Time */}
           <View style={styles.inputGroup}>
             <Text style={styles.label}>Start Time</Text>
             <View style={styles.timeInputRow}>
@@ -359,6 +366,7 @@ export function AddBlockModal({ visible, onClose }: AddBlockModalProps) {
             </View>
           </View>
 
+          {/* Date (only for single / non-recurring blocks) */}
           {!isRecurring && (
             <View style={styles.inputGroup}>
               <Text style={styles.label}>Date</Text>
@@ -395,17 +403,18 @@ export function AddBlockModal({ visible, onClose }: AddBlockModalProps) {
             </View>
           )}
 
+          {/* Recurring Toggle */}
           <View style={styles.inputGroup}>
-            <TouchableOpacity
+            <TouchableOpacity 
               style={[styles.recurringToggle, isRecurring && styles.recurringToggleActive]}
               onPress={() => setIsRecurring(!isRecurring)}
               activeOpacity={0.7}
             >
               <View style={styles.recurringToggleLeft}>
-                <Ionicons
-                  name="repeat"
-                  size={20}
-                  color={isRecurring ? colors.primary : colors.textSecondary}
+                <Ionicons 
+                  name="repeat" 
+                  size={20} 
+                  color={isRecurring ? colors.primary : colors.textSecondary} 
                 />
                 <View>
                   <Text style={[styles.recurringToggleTitle, isRecurring && { color: colors.primary }]}>
@@ -421,6 +430,7 @@ export function AddBlockModal({ visible, onClose }: AddBlockModalProps) {
               </View>
             </TouchableOpacity>
 
+            {/* Day Selection */}
             {isRecurring && (
               <View style={styles.daySection}>
                 <View style={styles.daySectionHeader}>
@@ -449,6 +459,7 @@ export function AddBlockModal({ visible, onClose }: AddBlockModalProps) {
               </View>
             )}
 
+            {/* End Date for recurring */}
             {isRecurring && (
               <View style={styles.daySection}>
                 <Text style={styles.dayLabel}>End Date</Text>
@@ -513,8 +524,10 @@ export function AddBlockModal({ visible, onClose }: AddBlockModalProps) {
               </View>
             )}
           </View>
+
         </ScrollView>
 
+        {/* Add Button */}
         <View style={styles.footer}>
           <TouchableOpacity
             style={[styles.addButton, loading && styles.addButtonDisabled]}
@@ -590,6 +603,7 @@ const createStyles = (colors: any, isDark: boolean) =>
       borderColor: colors.primary,
       backgroundColor: `${colors.primary}10`,
     },
+    typeIcon: { },
     typeLabel: {
       fontSize: 14,
       fontWeight: '600',
@@ -622,6 +636,18 @@ const createStyles = (colors: any, isDark: boolean) =>
       fontSize: 13,
       fontWeight: '500',
       color: colors.error,
+    },
+    endDatePickerContainer: {
+      marginTop: 10,
+    },
+    endDateDoneBtn: {
+      alignItems: 'center',
+      paddingVertical: 10,
+    },
+    endDateDoneText: {
+      color: colors.primary,
+      fontWeight: '600',
+      fontSize: 16,
     },
     timeInputRow: {
       flexDirection: 'row',

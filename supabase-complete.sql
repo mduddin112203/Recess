@@ -185,9 +185,9 @@ CREATE TABLE schedule_blocks (
   type        TEXT DEFAULT 'other' CHECK (type IN ('class','study','work','break','other')),
   start_time  TIME NOT NULL,
   end_time    TIME NOT NULL,
-  date        DATE,
-  day_of_week INTEGER CHECK (day_of_week >= 0 AND day_of_week <= 6),
-  end_date    DATE,
+  date        DATE,                                                       -- NULL for recurring
+  day_of_week INTEGER CHECK (day_of_week >= 0 AND day_of_week <= 6),      -- 0=Sun, 6=Sat
+  end_date    DATE,                                                       -- when recurring block stops
   created_at  TIMESTAMPTZ DEFAULT NOW()
 );
 

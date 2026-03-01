@@ -156,7 +156,7 @@ function createStyles(colors: any) {
       fontSize: 15,
       color: colors.text,
     },
-
+    
     bdayRow: {
       flexDirection: 'row',
       alignItems: 'center',

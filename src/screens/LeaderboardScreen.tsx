@@ -135,7 +135,7 @@ export function LeaderboardScreen() {
       });
 
       const entries: LeaderboardEntry[] = Object.entries(userPointsMap)
-        .filter(([userId]) => !blockedUsers.includes(userId))
+        .filter(([userId]) => !blockedUsers.includes(userId)) // Filter out blocked users
         .map(([userId, points]) => {
           const profile = profilesData?.find(p => p.id === userId);
           return {

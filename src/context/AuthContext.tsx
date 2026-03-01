@@ -51,7 +51,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         console.log('Auth event:', event);
         setSession(session);
         setUser(session?.user ?? null);
-
+        
         if (session?.user) {
           if (event === 'SIGNED_UP') {
             setLoading(true);
@@ -251,7 +251,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             accessToken = hashParams.get('access_token');
             refreshToken = hashParams.get('refresh_token');
           }
-
+          
           if (!accessToken && url.includes('?')) {
             const queryParams = new URLSearchParams(url.split('?')[1]);
             accessToken = queryParams.get('access_token');

@@ -14,6 +14,7 @@ import { useTheme } from '../context/ThemeContext';
 import { BLOCK_TYPES } from '../utils/constants';
 import { generateBreakPlan, formatTime } from '../utils/burnoutEngine';
 import { toLocalDateString, getLocalDayOfWeek } from '../utils/dateUtils';
+import { ScheduleBlock } from '../types';
 
 interface BreakPlannerModalProps {
   visible: boolean;
@@ -87,12 +88,12 @@ export function BreakPlannerModal({ visible, onClose }: BreakPlannerModalProps) 
 
   const previewBlocks = [
     ...todayBlocks.map(b => ({ ...b, isSuggested: false })),
-    ...suggestedBreaks.map((b, i) => ({
-      ...b,
-      id: `suggested-${i}`,
-      user_id: '',
-      created_at: '',
-      isSuggested: true
+    ...suggestedBreaks.map((b, i) => ({ 
+      ...b, 
+      id: `suggested-${i}`, 
+      user_id: '', 
+      created_at: '', 
+      isSuggested: true 
     })),
   ].sort((a, b) => a.start_time.localeCompare(b.start_time));
 
@@ -104,6 +105,7 @@ export function BreakPlannerModal({ visible, onClose }: BreakPlannerModalProps) 
       onRequestClose={onClose}
     >
       <View style={styles.container}>
+        {/* Header */}
         <View style={styles.header}>
           <Text style={styles.title}>Break Plan</Text>
           <TouchableOpacity onPress={onClose}>
@@ -111,11 +113,12 @@ export function BreakPlannerModal({ visible, onClose }: BreakPlannerModalProps) 
           </TouchableOpacity>
         </View>
 
-        <ScrollView
+        <ScrollView 
           style={styles.scrollView}
           contentContainerStyle={styles.content}
           showsVerticalScrollIndicator={false}
         >
+          {/* Introduction */}
           <View style={styles.introCard}>
             <Ionicons name="sparkles" size={32} color={colors.primary} />
             <View style={styles.introContent}>
@@ -132,6 +135,7 @@ export function BreakPlannerModal({ visible, onClose }: BreakPlannerModalProps) 
             </View>
           </View>
 
+          {/* Timeline Preview */}
           {suggestedBreaks.length > 0 && (
             <View style={styles.section}>
               <Text style={styles.sectionTitle}>Preview</Text>
@@ -144,7 +148,7 @@ export function BreakPlannerModal({ visible, onClose }: BreakPlannerModalProps) 
                   return (
                     <View key={block.id} style={styles.blockWrapper}>
                       {index > 0 && <View style={styles.connector} />}
-
+                      
                       <View style={[
                         styles.blockCard,
                         isBreak && styles.breakCard,
@@ -185,6 +189,7 @@ export function BreakPlannerModal({ visible, onClose }: BreakPlannerModalProps) 
             </View>
           )}
 
+          {/* Benefits */}
           {suggestedBreaks.length > 0 && (
             <View style={styles.benefitsCard}>
               <Text style={styles.benefitsTitle}>Benefits of taking breaks</Text>
@@ -204,6 +209,7 @@ export function BreakPlannerModal({ visible, onClose }: BreakPlannerModalProps) 
           )}
         </ScrollView>
 
+        {/* Actions */}
         <View style={styles.footer}>
           {suggestedBreaks.length > 0 ? (
             <TouchableOpacity
