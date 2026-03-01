@@ -147,7 +147,3 @@ Built for Stevens Quack Hacks 2026 — Mindfulness & Wellbeing
 ---
 
 **Remember**: Take breaks. Stay connected. Prevent burnout. 🌿
-
-<!-- test commit -->
-<!-- verified commit test -->
-<!-- signing key added -->
